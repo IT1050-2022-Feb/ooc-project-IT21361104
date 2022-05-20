@@ -1,0 +1,185 @@
+//vistor.h
+
+#include "feedback.h"
+#include "inquiry.h"
+#include "advertisement.h"
+
+#include<iostream>
+using namespace std;
+
+class Visitor{
+  private:
+    string firstName;
+    string lastName;
+    string emailAddress;
+    int contactNo;
+    string location;
+    double price;
+    string description;
+
+  public:
+    Visitor();
+
+    Visitor(string fName, string lName, string email, int number, string loc, double prc, string desc);
+
+    void register();
+
+    void viewAdvertisement(Advertisement *ad);
+
+    void filterAdvertisement(string loc, double amount, Advertisement *ad);
+
+    void addFeedback(string fName, string lName, string desc, string emailAD, int contactNo, Feedback *fb);
+
+    void viewFeedback(Feedback *fb);
+
+    void addInquiry(string fName, string lName, string desc, string emailAD, int contactNo, Inquiry *iq);
+
+    void viewInquiry(Inquiry *iq);
+
+    ~Visitor();
+
+};
+
+//visitor.cpp
+
+#include "visitor.h"
+#include "feedback.h"
+#include "inquiry.h"
+#include "advertisement.h"
+#include<iostream>
+
+using namespace std;
+
+Visitor::Visitor(){
+
+  firstName = "";
+  lastName = "";
+  emailAddress = "";
+  contactNo = 0;
+  location = "";
+  price = 0.00;
+  description = "";
+}
+
+Visitor::Visitor(string fName, string lName, string email, int number, string loc, double prc, string desc){
+ 
+  firstName = fName;
+  lastName = lName;
+  emailAddress = email;
+  contactNo = number;
+  location = loc;
+  price = prc;
+  description = desc;
+}
+
+void Visitor::register(){
+  
+}
+
+void Visitor::viewAdvertisement(Advertisement *ad){
+  
+}
+
+void Visitor::filterAdvertisement(string loc, double amount, Advertisement *ad){
+  
+}
+
+void Visitor::addFeedback(string fName, string lName, string desc, string emailAD, int contactNo, Feedback *fb){
+  
+}
+
+void Visitor::viewFeedback(Feedback *fb){
+  
+}
+
+void Visitor::addInquiry(string fName, string lName, string desc, string emailAD, int contactNo, Inquiry *iq){
+  
+}
+
+void Visitor::viewInquiry(Inquiry *iq){
+  
+}
+
+Visitor::~Visitor(){
+  
+}
+
+//manager.h
+
+#include "virtualSlip.h"
+#include "transaction.h"
+#define SIZE 2
+
+
+class Manager : public Profile{
+  protected:
+    int managerID;
+    VirtualSlip *virtualSlip[SIZE];
+    Transaction *transaction[SIZE];
+
+  public:
+    Manager();
+
+    Manager(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, int manager_ID, VirtualSlip *vslip[SIZE], Transaction *trnctn[SIZE]) : Profile (fName, lName, user_name, pwd, contactNo, emailAD);
+
+    void login();
+    
+    void logout();
+    
+    void verifyPayment(int manager_ID);
+    
+    void sendVirtualSlip();
+
+    void displayUserDetails();
+
+    ~Manager();
+};
+
+//manager.cpp
+
+#include "manager.h"
+#include "virtualSlip.h"
+#include "transaction.h"
+#include <iostream>
+#define SIZE 2
+
+using namespase std;
+
+Manager::Manager(){
+
+  managerID = 0;
+}
+
+Manager::Manager(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, int manager_ID, VirtualSlip *vslip[SIZE], Transaction *trnctn[SIZE]) : Profile (fName, lName, user_name, pwd, contactNo, emailAD){
+
+  managerID = manager_ID;
+  
+  for(int i = 0; i < SIZE; i++){
+    virtualSlip[i] = vslip[i];
+    transaction[i] = trnctn[i];
+  };
+}
+
+Manager::void login(){
+  
+}
+
+Manager::void logout(){
+  
+}
+
+Manager::void verifyPayment(int manager_ID){
+  
+}
+
+Manager::void sendVirtualSlip(){
+  
+}
+
+Manager::void displayUserDetails(){
+  
+}
+
+Manager::~Manager(){
+  
+}
