@@ -1,0 +1,252 @@
+//advertisement.h
+
+#include "registeredUser.h"
+#include <iostream>
+
+class Admin : public Profile{
+  protected:
+    int adminID;
+    int licenseNumber;
+
+  public:
+    Admin();
+
+    Admin(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, int admin_ID, int licenseNo) : Profile(fName, lName, user_name, pwd, contactNo, emailAD);
+
+    void login();
+
+    void validateUser(int licenseNo, RegisteredUser *reg);
+
+    void suspendUser(int licenseNo, RegisteredUser *reg);
+
+    void implementUpdates(int admin_ID, int licenseNo);
+
+    void displayUserDetails();
+
+    void logout();
+
+    ~Admin();
+};
+
+//advertisement.cpp
+
+#include "advertisement.h"
+#include "transaction.h"
+#include <iostream>
+
+using namespace std;
+
+Advertisement::Advertisement(){
+  
+  category = "";
+  subCategory = "";
+  type = "";
+  adDescription = "";
+  publisherName = "";
+  publisherEmail = "";
+  publisherContactNum = 0;
+  transaction = new Transaction();  
+ 
+}
+
+Advertisement::Advertisement(string cat, string subCat, string tpe, string ttle, string description, string pbName, string pbEmail, int pbCNum, int transID, string date, string conName, int conAcc, int cvv, double amnt, double ad_price, double ad_promo){
+
+  category = cat;
+  subCategory = subCat;
+  type = tpe;
+  adDescription = description;
+  publisherName = pbName;
+  publisherEmail = pbEmail;
+  publisherContactNum = pbCNum;
+  transaction = new Transaction(transID, date, conName, conAcc, cvv, amnt, ad_price, ad_promo);
+  }
+
+double Advertisement::transactionCalc(){
+  
+  transaction->calcPayment();
+}
+
+void Advertisement::displayAd(){
+  
+}
+
+Advertisement::~Advertisement(){
+
+  delete transaction;
+}
+
+//agent.h
+
+#include "advertisement.h"
+
+class Agent : public Profile{
+  protected:
+    int membershipID;
+    string location;
+    int rank;
+
+  public:
+    Agent();
+
+    Agent(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, int memberID, string loc, int agRank) : Profile (fName, lName, user_name, pwd, contactNo, emailAD);
+
+    void login();
+
+    void logout();
+
+    void validateAd(int memberID, Advertisement *advertise);
+
+    void blacklistAd(int memberID, Advertisement *advertise);
+
+    void promoteAd(int memberID);
+
+    void replyToInquiry(int memberID);
+
+    void displayUserDetails();
+
+    ~Agent();
+};
+
+//agent.cpp
+
+#include "agent'h"
+#include "advertisement.h"
+#include <iostream>
+
+using namespace std;
+
+Agent::Agent(){
+  
+  membershipID = 0;
+  location = "";
+  rank = 0;
+}
+
+Agent::Agent(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, int memberID, string loc, int agRank) : Profile (fName, lName, user_name, pwd, contactNo, emailAD){
+
+  membershipID = memberID;
+  location = loc;
+  rank = agRank;
+}
+
+void Agent::login(){
+  
+}
+
+void Agent::logout(){
+  
+}
+
+void Agent::validateAd(int memberID, Advertisement *advertise){
+  
+}
+
+void Agent::blacklistAd(int memberID, Advertisement *advertise){
+  
+}
+
+void Agent::promoteAd(int memberID){
+  
+}
+
+void Agent::replyToInquiry(int memberID){
+  
+}
+
+void Agent::displayUserDetails(){
+  
+}
+
+Agent::~Agent(){
+  
+}
+
+//feedback.h
+
+#include<iostream>
+using namespace std;
+
+class Feedback{
+  private:
+    string firstName;
+    string lastName;
+    string description;
+
+  public:
+    Feedback();
+
+    Feedback(string fName, string lName, string desc);
+
+    void displayFeedback();
+
+    ~Feedback();
+};
+
+//feedback.cpp
+
+#include "feedback.h"
+#include <iostream>
+
+using namespace std;
+
+Feedback::Feedback(){
+
+  firstName = "";
+  lastName = "";
+  description = "";
+}
+
+Feedback::Feedback(string fName, string lName, string desc){
+  
+  firstName = fName;
+  lastName = lName;
+  description = desc;
+}
+
+void Feedback::displayFeedback(){
+  
+}
+
+Feedback::~Feedback(){
+  
+}
+
+//main.cpp
+
+#include <iostream>
+#include "admin.h"
+#include "advertisement.h"
+#include "agent.h"
+#include "feedback.h"
+#include "inquiry.h"
+#include "manager.h"
+#include "profile.h"
+#include "registeredUser.h"
+#include "socialPlatform.h"
+#include "transaction.h"
+#include "virtualSlip.h"
+#include "visitor.h"
+
+using namespace std;
+
+int main() {
+
+  SocialPlatform sp1;
+  Inquiry iq1;
+  Feedback fb1;
+  Visitor v1;
+  Admin a1;
+  Agent ag1;
+  Manager *mg1 = new Manager();
+  VirtualSlip *vs = new VirtualSlip();
+  RegisteredUser *regUser = new RegisteredUser();
+  regUser->addAdvertisement();
+  Transaction *transaction = new Transaction();
+
+  delete mg1;
+  delete vs;
+  delete regUser;
+  delete transaction;
+
+  return 0;
+}
