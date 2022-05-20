@@ -1,0 +1,259 @@
+//profile.h
+#include<iostream>
+
+using namespace std;
+
+class Profile{
+  protected:
+    string firstName;
+    string lastName;
+    string userName;
+    string password;
+    int contactNumber;
+    string emailAddress;
+
+  public:
+    Profile();
+    Profile(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD);
+
+    virtual void displayUserDetails() = 0;
+};
+
+//profile.cpp
+#include "profile.h"
+#include<iostream>
+
+using namespace std;
+
+Profile::Profile(){
+
+  firstName = "";
+  lastName = "";
+  userName = "";
+  password = "";
+  contactNumber = 0;
+  emailAddress = "";
+};
+
+Profile::Profile(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD){
+
+  firstName = fName;
+  lastName = lName;
+  userName = user_name;
+  password = pwd;
+  contactNumber = contactNo;
+  emailAddress = emailAD;
+};
+
+virtual void Profile::displayUserDetails() = 0;
+
+//registeredUser.h
+#include "profile.h"
+#include "advertisement.h"
+#include "socialPlatform.h"
+#include "inquiry.h"
+#include "feedback.h"
+#define SIZE  2
+
+class RegisteredUser : public Profile{
+  protected:
+    string address;
+    string postalCode;
+    int advertisementID;
+    Advertisement *advertisement[SIZE];
+    SocialPlatform *social[SIZE];
+    Inquiry *inquiry[SIZE];
+    Feedback *feedback[SIZE];
+
+    public:
+    RegisteredUser();
+
+    RegisteredUser(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, string addressReg, string pCode, int adID, string cat, string subCat, string tpe, string ttle, string description, string pbName, string pbEmail, int pbCNum, int transID, string date, string conName, int conAcc, int cvv, double amnt, double ad_price, double ad_promo, SocialPlatform *s[SIZE], Inquiry *in[SIZE], Feedback *f[SIZE]) : Profile (fName, lName, user_name, pwd, contactNo, emailAD);
+
+    void login();
+    
+    void logout();
+
+    void postAd();
+
+    void deleteAd();
+
+    void editAd();
+
+    void requestAdPromotion();
+
+    void viewAdvertisement();
+
+    void editProfile();
+
+    void deleteProfile();
+
+    void filterAdvertisement(string loc, double amount);
+
+    void addFeedback(string fName, string lName, string desc, string emailAD, int contactNo);
+
+    void viewFeedback();
+
+    void addInquiry(string fName, string lName, string desc, string emailAD, int contactNo);
+
+    void viewInquiry();
+
+    void displayUserDetails();
+
+    void addAdvertisement(string cat, string subCat, string tpe, string ttle, string description, string pbName, string pbEmail, int pbCNum, int transID, string date, string conName, int conAcc, int cvv, double amnt, double ad_price, double ad_promo);
+
+    ~RegisteredUser();
+
+};
+
+//registeredUser.cpp
+#include "registeredUser.h"
+#include "advertisement.h"
+#include "socialPlatform.h"
+#include "inquiry.h"
+#include "feedback.h"
+#include <iostream>
+#define SIZE  2
+
+using namespace std;
+
+RegisteredUser::RegisteredUser(){
+
+  address = "";
+  postalCode = 0;
+  advertisementID = 0;
+}
+
+RegisteredUser::RegisteredUser(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, string addressReg, string pCode, int adID, SocialPlatform *s[SIZE], Inquiry *in[SIZE], Feedback *f[SIZE]) : Profile (fName, lName, user_name, pwd, contactNo, emailAD){
+
+  address = addressReg;
+  postalCode = pCode;
+  advertisementID = adID;
+
+  for(int i = 0; i < SIZE; i++){
+    social[i] = s[i];
+    inquiry[i] = in[i];
+    feedback[i] = f[i];
+  };
+    
+}
+
+void RegisteredUser::login(){
+  
+}
+
+void RegisteredUser::logout(){
+  
+}
+
+void RegisteredUser::postAd(){
+  
+}
+
+void RegisteredUser::deleteAd(){
+  
+}
+
+void RegisteredUser::editAd(){
+  
+}
+
+void RegisteredUser::requestAdPromotion(){
+  
+}
+
+void RegisteredUser::viewAdvertisement(){
+  
+}
+
+void RegisteredUser::editProfile(){
+  
+}
+
+void RegisteredUser::deleteProfile(){
+  
+}
+
+void RegisteredUser::filterAdvertisement(string loc, double amount){
+  
+}
+
+void RegisteredUser::addFeedback(string fName, string lName, string desc, string emailAD, int contactNo){
+  
+}
+
+void RegisteredUser::viewFeedback(){
+  
+}
+
+void RegisteredUser::addInquiry(string fName, string lName, string desc, string emailAD, int contactNo){
+  
+}
+
+void RegisteredUser::viewInquiry(){
+  
+}
+
+void RegisteredUser::displayUserDetails(){
+  
+}
+
+void RegisteredUser::addAdvertisement(string cat, string subCat, string tpe, string ttle, string description, string pbName, string pbEmail, int pbCNum, int transID, string date, string conName, int conAcc, int cvv, double amnt, double ad_price, double ad_promo)
+{
+
+  advertisement[0] = new Advertisement(cat, subCat, tpe, ttle, description, pbName, pbEmail, pbCNum, transID, date, conName, conAcc, cvv, amnt, ad_price, ad_promo);
+  advertisement[1] = new Advertisement(cat, subCat, tpe, ttle, description, pbName, pbEmail, pbCNum, transID, date, conName, conAcc, cvv, amnt, ad_price, ad_promo);
+  
+}
+
+RegisteredUser::~RegisteredUser(){
+  for(int i = 0; i < SIZE; i++){
+    delete advertisement[i];
+  };
+}
+
+//socialPlatform.h
+#include <iostream>
+using namespace std;
+
+class SocialPlatform{
+    private:
+      string socialAccount;
+      string hyperlink;
+
+    public:
+      SocialPlatform();
+
+      SocialPlatform(string socialAcc, string link);
+
+      void directing();
+
+      ~SocialPlatform();
+};
+
+//socialPlatform.cpp
+#include "socialPlatform.h"
+#include <iostream>
+
+using namespace std;
+
+SocialPlatform::SocialPlatform(){
+
+  socialAccount = "";
+  hyperlink = "";
+}
+
+SocialPlatform::SocialPlatform(string socialAcc, string link){
+
+  socialAccount = socialAcc;
+  hyperlink = link;
+}
+
+void SocialPlatform::directing(){
+  
+}
+
+SocialPlatform::~SocialPlatform(){
+  
+}
+
