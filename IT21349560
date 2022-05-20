@@ -76,3 +76,60 @@ Admin::~Admin()
 {
 
 }
+
+//inquiry.h
+
+#include<iostream>
+using namespace std;
+
+class Inquiry{
+  private:
+    string firstName;
+    string lastName;
+    string description;
+    string emailAddress;
+    int mobileNumber;
+
+  public:
+    Inquiry();
+
+    Inquiry(string fName, string lName, string desc, string email, int number);
+
+    void displayInquiry();
+
+    ~Inquiry();
+};
+
+//inquiry.cpp
+
+#include "inquiry.h"
+#include <iostream>
+
+using namespace std;
+
+Inquiry::Inquiry(){
+
+  firstName = "";
+  lastName = "";
+  description = "";
+  emailAddress = "";
+  mobileNumber = 0;
+}
+
+Inquiry::Inquiry(string fName, string lName, string desc, string email, int number){
+
+  firstName = fName;
+  lastName = lName;
+  description = desc;
+  emailAddress = email;
+  mobileNumber = number;
+}
+
+void Inquiry::displayInquiry(){
+  
+}
+
+Inquiry::~Inquiry(){
+  
+}
+
