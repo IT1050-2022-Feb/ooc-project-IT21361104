@@ -1,0 +1,78 @@
+//admin.h
+
+#include "registeredUser.h"
+#include <iostream>
+
+class Admin : public Profile{
+  protected:
+    int adminID;
+    int licenseNumber;
+
+  public:
+    Admin();
+
+    Admin(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, int admin_ID, int licenseNo) : Profile(fName, lName, user_name, pwd, contactNo, emailAD);
+
+    void login();
+
+    void validateUser(int licenseNo, RegisteredUser *reg);
+
+    void suspendUser(int licenseNo, RegisteredUser *reg);
+
+    void implementUpdates(int admin_ID, int licenseNo);
+
+    void displayUserDetails();
+
+    void logout();
+
+    ~Admin();
+};
+
+//admin.cpp
+
+#include "admin.h"
+#include <iostream>
+
+using namespace std;
+
+Admin::Admin()
+{
+  adminID = 0;
+  licenseNumber = 0;
+}
+
+Admin::Admin(string fName, string lName, string user_name, string pwd, int contactNo, string emailAD, int admin_ID, int licenseNo) : Profile(fName, lName, user_name, pwd, contactNo, emailAD)
+{
+  adminID = admin_ID;
+  licenseNumber = licenseNo;
+}
+
+void Admin::login()
+{
+
+}
+
+void Admin::validateUser(int licenseNo, RegisteredUser *reg)
+{
+
+}
+
+void Admin::suspendUser(int licenseNo, RegisteredUser *reg)
+{
+
+}
+
+void Admin::implementUpdates(int admin_ID, int licenseNo)
+{
+
+}
+
+void Admin::displayUserDetails()
+{
+
+}
+
+Admin::~Admin()
+{
+
+}
