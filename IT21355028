@@ -1,0 +1,131 @@
+// Transaction.h
+
+#include "advertisement.h"
+#include<string>
+#include<iostream>
+using namespace std;
+
+class Transaction{
+
+  private:
+    int transactionID;
+    string validDate;
+    string contributorName;
+    int contributorAccNumber;
+    int CVV;
+    double amount;
+    double adPrice;
+    double adPromotion;
+
+  public:
+    Transaction();
+
+    Transaction(int transID, string date, string conName, int conAcc, int cvv, double amnt, double ad_price, double ad_promo);
+
+    double calcPayment();
+
+    ~Transaction();
+};
+
+
+// Transaction.cpp
+
+#include "Transaction.h"
+#include "advertisement.h"
+#include <iostream>
+
+using namespace std;
+
+Transaction::Transaction(){
+
+  transactionID = 0;
+  validDate = "";
+  contributorName = "";
+  contributorAccNumber = 0;
+  CVV = 0;
+  amount = 0.00;
+  adPrice = 0.00;
+  adPromotion = 0.00;
+}
+
+Transaction::Transaction(int transID, string date, string conName, int conAcc, int cvv, double amnt, double ad_price, double ad_promo){
+
+  transactionID = transID;
+  validDate = date;
+  contributorName = conName;
+  contributorAccNumber = conAcc;
+  CVV = cvv;
+  amount = amnt;
+  adPrice = ad_price;
+  adPromotion = ad_promo;
+}
+
+double Transaction::calcPayment(){
+
+}
+
+Transaction::~Transaction(){
+
+}
+
+//VirtualSlip.h
+
+#include "Transaction.h"
+#include<string>
+#include<iostream>
+using namespace std;
+
+class VirtualSlip{
+    private:
+      string verifiedManagerName;
+      int verifiedManagerID;
+      string bankStatement;
+      Transaction *transaction;
+
+    public:
+      VirtualSlip();
+
+      VirtualSlip(string vfdManager, int vfdManagerID, string bank_state);
+
+      void displaySlip();
+
+      void addTransaction(Transaction *trans);
+
+      ~VirtualSlip();
+};
+
+
+//VirtualSlip.cpp
+
+#include "VirtualSlip.h"
+#include <iostream>
+#include<string>
+
+using namespace std;
+
+VirtualSlip::VirtualSlip(){
+
+  verifiedManagerName = "";
+  verifiedManagerID = 0;
+  bankStatement = "";
+}
+
+VirtualSlip::VirtualSlip(string vfdManager, int vfdManagerID, string bank_state){
+
+  verifiedManagerName = vfdManager;
+  verifiedManagerID = vfdManagerID;
+  bankStatement = bank_state;
+}
+
+void VirtualSlip::displaySlip(){
+
+}
+
+void VirtualSlip::addTransaction(Transaction *trans){
+
+  transaction = trans;
+}
+
+VirtualSlip::~VirtualSlip(){
+
+}
